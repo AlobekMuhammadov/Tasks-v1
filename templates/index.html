@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      {% load static %}
+    <title>To-Do List</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+  </head>
+  <body>
+    <div class="container">
+        <div class="head">
+            <h1>To-Do List</h1>
+            <div style="display: flex; align-items: center;">
+                <h3>User</h3>
+                <a href="/logout/" style="text-decoration: none; color: REd;">
+                Log out
+                </a>
+            </div>
+      </div>
+
+      <div class="task-add">
+        <form id="task-form" method="post"> {% csrf_token %}
+            <div class="form1">
+              <input type="text" name="s" placeholder="Sarlavhasi ...">
+              <input type="date" name="sa">
+              <select name="h">
+                <option class="opt" value="Yangi">
+                  Yangi
+                </option>
+                <option class="opt" value="Bajarilyapti">
+                  Bajarilyapti
+                </option>
+                <option class="opt" value="Bajarildi">
+                  Bajarildi
+                </option>
+              </select>
+            </div>
+            <div class="fomr1">
+              <input type="text" name="b" placeholder="Batafsil ...">
+              <button type="submit" class="btn">Qo'shish</button>
+            </div>
+          </form>
+      </div>
+      <hr style="margin: 10px 5px;">
+        {% for i in todolar %}
+      <div class="task">
+        <ul id="task-list">
+          <li>
+              <div>
+                  {{i.sarlavha}}
+              </div>
+              <div>
+                    <input type="text" value="{{i.holat}}" disabled>
+                    <input type="date" value="{{i.sana}}" disabled>
+                    <button type="submit" class="edit"><a href="./edit.html">Edit</a></button>
+                    <button type="submit" class="delete"><a href="/todo_ochir/{{i.id}}/">Delete</a></button>
+              </div>
+          </li>
+        </ul>
+        <ul class="details">
+            {{i.batafsil}}
+        </ul>
+      </div>
+        {% endfor %}
+    </div>
+  </body>
+</html>
