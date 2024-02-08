@@ -10,7 +10,7 @@
         <div class="head">
             <h1>To-Do List</h1>
             <div style="display: flex; align-items: center;">
-                <h3>User</h3>
+                <h3 style="text-transform:capitalize">{{user}}</h3>
                 <a href="/logout/" style="text-decoration: none; color: REd;">
                 Log out
                 </a>
@@ -50,8 +50,8 @@
               </div>
               <div>
                     <input type="text" value="{{i.holat}}" disabled>
-                    <input type="date" value="{{i.sana}}" disabled>
-                    <button type="submit" class="edit"><a href="./edit.html">Edit</a></button>
+                    <input value="{{i.sana}}" disabled>
+                    <button type="submit" class="edit"><a href="/edit/{{i.id}}/">Edit</a></button>
                     <button type="submit" class="delete"><a href="/todo_ochir/{{i.id}}/">Delete</a></button>
               </div>
           </li>
